@@ -6,8 +6,6 @@
 Clone our repository to your pc and then
 make two terminals by using the `cd` command
 
-
-
 # FrontEnd
 ### CLI
   - Run `cd FrontEnd`
@@ -35,6 +33,13 @@ make two terminals by using the `cd` command
       - **BackEnd\src\api\utils** this folder contains all of the utility functions used in the API
       - **BackEnd\src\api\middleware** this folder contains all of the global middlewares used in the API, such as; authentication check, role check, and passport middleware
       - **BackEnd\src\api\websocket** this folder contains the websocket server setup, and it functions
+
+### API Routes(Briefly)
+  - **/api/users** use for requests that have something to do with user such as; getting users information, manipulating users information, registering, loggin in, loggin out, and deleting user
+  - **/api/admins** use for requests with users that have admin role such as; monitoring users status, and approving users membership proves
+  - **/api/vtubers** use for requests that have something to do with vtuber such as; getting vtubers information, adding, manipulating, and deleting vtubers(ADMIN)
+  - **/api/live-streams** use for requests that have something to do with live streams such as; getting live streams information, adding, manipulating and deleting vtuber's live streams(ADMIN)
+  - **/api/feelings/** use for requests that have something to do with feelings such as; adding, manipulating, and deleting feelings
 
 ## Setup database(& backend in the future)
 
