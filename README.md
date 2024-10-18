@@ -28,11 +28,10 @@ make two terminals by using the `cd` command
   - Setup the variables in it { From discord-backend channel }
 
 ### Essential folders
-**BackEnd\src\api** this folder contains essential codes for the backend services such as; api routes, websockets, and utility functions
-      - **BackEnd\src\api\routes** this folder contains all of the RESTful API routes, most of which are called by the frontend side of the app
-      - **BackEnd\src\api\utils** this folder contains all of the utility functions used in the API
-      - **BackEnd\src\api\middleware** this folder contains all of the global middlewares used in the API, such as; authentication check, role check, and passport middleware
-      - **BackEnd\src\api\websocket** this folder contains the websocket server setup, and it functions
+  - **BackEnd\src\api\routes** this folder contains all of the RESTful API routes, most of which are called by the frontend side of the app
+  - **BackEnd\src\api\utils** this folder contains all of the utility functions used in the API
+  - **BackEnd\src\api\middleware** this folder contains all of the global middlewares used in the API, such as; authentication check, role check, and passport middleware
+  - **BackEnd\src\api\websocket** this folder contains the websocket server setup, and it functions
 
 ### API Routes(Briefly)
   - **/api/users** use for requests that have something to do with user such as; getting users information, manipulating users information, registering, loggin in, loggin out, and deleting user
