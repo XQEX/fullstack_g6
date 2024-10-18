@@ -1,7 +1,7 @@
 # PIXELA WORLDEND FC
 
-##Developer manual
-
+## Developer manual
+Dont forget to install Node.js to your pc [Download here](https://nodejs.org/en)
 ### Steps to setup project for developers
 Clone our repository to your pc and then
 make two terminals by using the `cd` command
