@@ -19,7 +19,7 @@ Make two terminals by using the `cd` command
 **FrontEnd\public\img** this folder contains several images in .png or .jpg format that we’ve been used throughout this website
       -	**FrontEnd\src\app\page.tsx** 
       -     **FrontEnd\src\app\globals.css** 
-      -	**FrontEnd\src\app\components** this folder contains components from shadcn, to learn more click here
+      -	**FrontEnd\src\app\components** this folder contains components from shadcn, to learn more [click here](https://ui.shadcn.com/) 
 
 # BackEnd
 ## To start
