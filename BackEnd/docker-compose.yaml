@@ -1,0 +1,19 @@
+name: g6_project
+services:
+  database:
+    image: postgres:16.4-alpine
+    container_name: g6-database
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_SUPER_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_SUPER_PASSWORD}
+    volumes:
+      - database_data:/var/lib/postgresql/data
+    ports:
+      - 5432:${POSTGRES_PORT}
+    networks:
+      - g6-network
+networks:
+  g6-network:
+volumes:
+  database_data:

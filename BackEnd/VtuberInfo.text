@@ -1,0 +1,59 @@
+<Beta AMI> 
+{
+            "kind": "youtube#searchResult",
+            "etag": "-LaM0c4IyeZyXFa35ou1Wps7BJY",
+            "id": {
+                "kind": "youtube#channel",
+                "channelId": "UCa8ILv94qHT6oar_jVzg9sQ"
+            },
+            "snippet": {
+                "publishedAt": "2024-02-06T10:51:33Z",
+                "channelId": "UCa8ILv94qHT6oar_jVzg9sQ",
+                "title": "Beta AMI Ch. Pixela-World-End",
+                "description": "ภัยพิบัติหุ่นยนต์ Papa：@yuukihagure | @karamomokitchen ดวงดาวที่เบต้า เอเอ็มไอจากมา คือสถานที่ ๆ เทคโนโลยีก้าวหน้าจนถึงจุดสูงสุด ...",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/Y6CrVD1HESoYP3WoH2Sa49i0JrmJjVChwfsLyAoJMAdHukuEVTABlM3CE3AE7ukQD2kJshyU=s88-c-k-c0xffffffff-no-rj-mo"
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/Y6CrVD1HESoYP3WoH2Sa49i0JrmJjVChwfsLyAoJMAdHukuEVTABlM3CE3AE7ukQD2kJshyU=s240-c-k-c0xffffffff-no-rj-mo"
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/Y6CrVD1HESoYP3WoH2Sa49i0JrmJjVChwfsLyAoJMAdHukuEVTABlM3CE3AE7ukQD2kJshyU=s800-c-k-c0xffffffff-no-rj-mo"
+                    }
+                },
+                "channelTitle": "Beta AMI Ch. Pixela-World-End",
+                "liveBroadcastContent": "none",
+                "publishTime": "2024-02-06T10:51:33Z"
+            }
+}
+
+<Mild-R>
+{
+            "kind": "youtube#searchResult",
+            "etag": "UkB2blVv21iAuyVtXdPyS7qaOWo",
+            "id": {
+                "kind": "youtube#channel",
+                "channelId": "UCknOyz3O0-G6w5SJNAgO7uQ"
+            },
+            "snippet": {
+                "publishedAt": "2024-02-06T09:33:16Z",
+                "channelId": "UCknOyz3O0-G6w5SJNAgO7uQ",
+                "title": "Mild-R Ch. Pixela-World-End",
+                "description": "ภัยพิบัติกลายพันธุ์ Mama：@atwomaru Papa：@karamomokitchen มายด์อาร์ Mutant มนุษย์กลายพันธุ์ที่จะมารักษาหัวใจคุณแบบ super ...",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/atrD7uoHUrNmGohMSZhle-uq01cPopl514z5zfmuF5ICiB51XlLXa4Cptv4XDwKpEOVh_k81DQ=s88-c-k-c0xffffffff-no-rj-mo"
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/atrD7uoHUrNmGohMSZhle-uq01cPopl514z5zfmuF5ICiB51XlLXa4Cptv4XDwKpEOVh_k81DQ=s240-c-k-c0xffffffff-no-rj-mo"
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/atrD7uoHUrNmGohMSZhle-uq01cPopl514z5zfmuF5ICiB51XlLXa4Cptv4XDwKpEOVh_k81DQ=s800-c-k-c0xffffffff-no-rj-mo"
+                    }
+                },
+                "channelTitle": "Mild-R Ch. Pixela-World-End",
+                "liveBroadcastContent": "none",
+                "publishTime": "2024-02-06T09:33:16Z"
+            }
+}

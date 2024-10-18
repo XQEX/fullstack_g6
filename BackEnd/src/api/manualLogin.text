@@ -1,0 +1,147 @@
+For authentication
+<Login Route>
+router.route("/login").post(async (req, res) => {
+  try {
+    // ! already logged-in !
+    if (req.session.user) {
+      return res.status(400).json({ msg: "Already logged in" });
+    }
+
+    const { name_email, password } = req.body;
+
+    // check null
+    if (!name_email || !password) {
+      return res.status(400).json({
+        msg: "Datas provided from the body aren't meeting the requirment",
+      });
+    }
+
+    // find all the users with the correct username or email
+    const findUsers = await drizzlePool.query.pixelianTable.findMany({
+      columns: { id: true, name: true, email: true, password: true },
+      where: or(
+        eq(name_email, pixelianTable.name),
+        eq(name_email, pixelianTable.email)
+      ),
+    });
+
+    // username or email isn't found
+    if (findUsers.length === 0) {
+      return res.status(404).json({ msg: "Pixelian not found" });
+    }
+
+    // check password
+    let foundUser = null;
+    for (const user of findUsers) {
+      const isMatch = await bcrypt.compare(password, user.password);
+
+      // found!
+      if (isMatch) {
+        foundUser = user;
+        break;
+      }
+    }
+
+    // incorrect password
+    if (!foundUser) {
+      return res.status(404).json({ msg: "Incorrect password" });
+    }
+
+    // login successfully
+    req.session.user = { id: foundUser.id, isOAuth: false };
+    res.status(200).json({
+      msg: "Successfully login!",
+      data: { id: foundUser.id, name: foundUser.name },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+<Google OAuth 2.0 Route>
+router.route("/oauth/google").get(async (req, res) => {
+  try {
+    res.redirect(
+      `${googleOAuth.authorURL}?client_id=${googleOAuth.clientID}&redirect_uri=${googleOAuth.callbackURL}&response_type=code&scope=${googleOAuth.scope.email} ${googleOAuth.scope.profile}`
+    );
+  } catch (error) {
+    console.log(error);
+  }
+});
+router.route("/oauth/google/callback").get(async (req, res) => {
+  try {
+    // get code from params
+    const { code } = req.query;
+    if (!code) {
+      res.status(500).redirect(`${webUsed}?error=Auth-code_not_found`);
+    }
+
+    // fetch post from token url
+    const tokenResponse = await fetch(googleOAuth.tokenURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        client_id: googleOAuth.clientID,
+        client_secret: googleOAuth.clientSecret,
+        code: code as string,
+        redirect_uri: googleOAuth.callbackURL,
+        grant_type: "authorization_code",
+      }),
+    });
+
+    // get access token
+    const { access_token } = await tokenResponse.json();
+
+    // fetch get from resource
+    const userInfoResponse = await fetch(googleOAuth.resourceURL, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${access_token}` },
+    });
+
+    //parse to get userInfo
+    const userInfo = await userInfoResponse.json();
+
+    console.log(userInfo);
+
+    if (!access_token) {
+      res.status(500).redirect(`${webUsed}?error=Can_not_get_access-token`);
+    }
+
+    // check if user exist in oauth table
+    const findUser = await drizzlePool.query.oauthPixelianTable.findFirst({
+      columns: { id: true },
+      where: eq(oauthPixelianTable.email, userInfo.email),
+    });
+
+    // user doesn't exist yet
+    if (!findUser) {
+      await drizzlePool.insert(oauthPixelianTable).values({
+        name: userInfo.name,
+        email: userInfo.email,
+        provider: "google",
+        provider_id: userInfo.id,
+      });
+
+      // get created user from db
+      const createdUser = await drizzlePool.query.oauthPixelianTable.findFirst({
+        columns: { id: true },
+        where: eq(oauthPixelianTable.email, userInfo.email),
+      });
+
+      // fail-safe
+      if (!createdUser) {
+        return res.status(500).redirect(`${webUsed}?error=Can_not_create_user`);
+      }
+
+      // session for createdUser
+      req.session.user = { id: createdUser.id, isOAuth: true };
+      return res.status(200).redirect(`${webUsed}?user=${createdUser.id}`);
+    }
+
+    // user already existed
+    req.session.user = { id: findUser.id, isOAuth: true };
+    res.status(200).redirect(`${webUsed}?user=${findUser.id}`);
+  } catch (error) {
+    console.log(error);
+  }
+});

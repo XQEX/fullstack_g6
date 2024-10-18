@@ -1,0 +1,1009 @@
+{
+  "id": "0d804529-0679-4537-b892-ace4640944b2",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.pixelian_membership_proof": {
+      "name": "pixelian_membership_proof",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "pixelian_id": {
+          "name": "pixelian_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "oauth_pixelian_id": {
+          "name": "oauth_pixelian_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "membership_proof_image": {
+          "name": "membership_proof_image",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "pixelian_membership_proof_pixelian_id_pixelian_id_fk": {
+          "name": "pixelian_membership_proof_pixelian_id_pixelian_id_fk",
+          "tableFrom": "pixelian_membership_proof",
+          "tableTo": "pixelian",
+          "columnsFrom": [
+            "pixelian_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "pixelian_membership_proof_oauth_pixelian_id_oauthPixelian_id_fk": {
+          "name": "pixelian_membership_proof_oauth_pixelian_id_oauthPixelian_id_fk",
+          "tableFrom": "pixelian_membership_proof",
+          "tableTo": "oauthPixelian",
+          "columnsFrom": [
+            "oauth_pixelian_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "pixelian_proof_constraint": {
+          "name": "pixelian_proof_constraint",
+          "nullsNotDistinct": false,
+          "columns": [
+            "pixelian_id",
+            "membership_proof_image"
+          ]
+        },
+        "oauthPixelian_proof_constraint": {
+          "name": "oauthPixelian_proof_constraint",
+          "nullsNotDistinct": false,
+          "columns": [
+            "oauth_pixelian_id",
+            "membership_proof_image"
+          ]
+        }
+      }
+    },
+    "public.liveStreamCategory": {
+      "name": "liveStreamCategory",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "liveStreamCategory_name_unique": {
+          "name": "liveStreamCategory_name_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "name"
+          ]
+        }
+      }
+    },
+    "public.liveStream": {
+      "name": "liveStream",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "vtuber_id": {
+          "name": "vtuber_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "stream_category_id": {
+          "name": "stream_category_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "link": {
+          "name": "link",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "thumbnail_link": {
+          "name": "thumbnail_link",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'UNDEFINED'"
+        },
+        "status": {
+          "name": "status",
+          "type": "live_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'END'"
+        },
+        "insert_type": {
+          "name": "insert_type",
+          "type": "live_insert_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'MANUAL'"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "liveStream_vtuber_id_vtuber_id_fk": {
+          "name": "liveStream_vtuber_id_vtuber_id_fk",
+          "tableFrom": "liveStream",
+          "tableTo": "vtuber",
+          "columnsFrom": [
+            "vtuber_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "liveStream_stream_category_id_liveStreamCategory_id_fk": {
+          "name": "liveStream_stream_category_id_liveStreamCategory_id_fk",
+          "tableFrom": "liveStream",
+          "tableTo": "liveStreamCategory",
+          "columnsFrom": [
+            "stream_category_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "liveStream_link_unique": {
+          "name": "liveStream_link_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "link"
+          ]
+        }
+      }
+    },
+    "public.membership_tier": {
+      "name": "membership_tier",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "vtuber_name": {
+          "name": "vtuber_name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tier": {
+          "name": "tier",
+          "type": "tiers",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tier_name": {
+          "name": "tier_name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "vtuber_tierIndex": {
+          "name": "vtuber_tierIndex",
+          "columns": [
+            {
+              "expression": "vtuber_name",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "tier",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "membership_tier_vtuber_name_vtuber_name_fk": {
+          "name": "membership_tier_vtuber_name_vtuber_name_fk",
+          "tableFrom": "membership_tier",
+          "tableTo": "vtuber",
+          "columnsFrom": [
+            "vtuber_name"
+          ],
+          "columnsTo": [
+            "name"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.oauthPixelian_membership": {
+      "name": "oauthPixelian_membership",
+      "schema": "",
+      "columns": {
+        "oauth_pixelian_id": {
+          "name": "oauth_pixelian_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "membership_tier_id": {
+          "name": "membership_tier_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "oauthPixelian_membership_oauth_pixelian_id_oauthPixelian_id_fk": {
+          "name": "oauthPixelian_membership_oauth_pixelian_id_oauthPixelian_id_fk",
+          "tableFrom": "oauthPixelian_membership",
+          "tableTo": "oauthPixelian",
+          "columnsFrom": [
+            "oauth_pixelian_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "oauthPixelian_membership_membership_tier_id_membership_tier_id_fk": {
+          "name": "oauthPixelian_membership_membership_tier_id_membership_tier_id_fk",
+          "tableFrom": "oauthPixelian_membership",
+          "tableTo": "membership_tier",
+          "columnsFrom": [
+            "membership_tier_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "uniqueoauthPixelianMembershipConstraintConstraint": {
+          "name": "uniqueoauthPixelianMembershipConstraintConstraint",
+          "nullsNotDistinct": false,
+          "columns": [
+            "oauth_pixelian_id",
+            "membership_tier_id"
+          ]
+        }
+      }
+    },
+    "public.oauthPixelian": {
+      "name": "oauthPixelian",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "provider": {
+          "name": "provider",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "provider_id": {
+          "name": "provider_id",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "profile_picture": {
+          "name": "profile_picture",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "favorite_vtuber_name": {
+          "name": "favorite_vtuber_name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role": {
+          "name": "role",
+          "type": "roles",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'USER'"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "oauthPixelian_favorite_vtuber_name_vtuber_name_fk": {
+          "name": "oauthPixelian_favorite_vtuber_name_vtuber_name_fk",
+          "tableFrom": "oauthPixelian",
+          "tableTo": "vtuber",
+          "columnsFrom": [
+            "favorite_vtuber_name"
+          ],
+          "columnsTo": [
+            "name"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "oauthPixelian_provider_id_unique": {
+          "name": "oauthPixelian_provider_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "provider_id"
+          ]
+        },
+        "provider_emailUnique": {
+          "name": "provider_emailUnique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "provider",
+            "email"
+          ]
+        }
+      }
+    },
+    "public.pixelian_feelings": {
+      "name": "pixelian_feelings",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "feeling": {
+          "name": "feeling",
+          "type": "varchar(1000)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "vtuber_name": {
+          "name": "vtuber_name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pixelian_id": {
+          "name": "pixelian_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "oauth_pixelian_id": {
+          "name": "oauth_pixelian_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "pixelian_feelings_vtuber_name_vtuber_name_fk": {
+          "name": "pixelian_feelings_vtuber_name_vtuber_name_fk",
+          "tableFrom": "pixelian_feelings",
+          "tableTo": "vtuber",
+          "columnsFrom": [
+            "vtuber_name"
+          ],
+          "columnsTo": [
+            "name"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "pixelian_feelings_pixelian_id_pixelian_id_fk": {
+          "name": "pixelian_feelings_pixelian_id_pixelian_id_fk",
+          "tableFrom": "pixelian_feelings",
+          "tableTo": "pixelian",
+          "columnsFrom": [
+            "pixelian_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "pixelian_feelings_oauth_pixelian_id_oauthPixelian_id_fk": {
+          "name": "pixelian_feelings_oauth_pixelian_id_oauthPixelian_id_fk",
+          "tableFrom": "pixelian_feelings",
+          "tableTo": "oauthPixelian",
+          "columnsFrom": [
+            "oauth_pixelian_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.pixelian_membership": {
+      "name": "pixelian_membership",
+      "schema": "",
+      "columns": {
+        "pixelian_id": {
+          "name": "pixelian_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "membership_tier_id": {
+          "name": "membership_tier_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "pixelian_membership_pixelian_id_pixelian_id_fk": {
+          "name": "pixelian_membership_pixelian_id_pixelian_id_fk",
+          "tableFrom": "pixelian_membership",
+          "tableTo": "pixelian",
+          "columnsFrom": [
+            "pixelian_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "pixelian_membership_membership_tier_id_membership_tier_id_fk": {
+          "name": "pixelian_membership_membership_tier_id_membership_tier_id_fk",
+          "tableFrom": "pixelian_membership",
+          "tableTo": "membership_tier",
+          "columnsFrom": [
+            "membership_tier_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "pixelianMembershipConstraint": {
+          "name": "pixelianMembershipConstraint",
+          "nullsNotDistinct": false,
+          "columns": [
+            "pixelian_id",
+            "membership_tier_id"
+          ]
+        }
+      }
+    },
+    "public.pixelianSessions": {
+      "name": "pixelianSessions",
+      "schema": "",
+      "columns": {
+        "sid": {
+          "name": "sid",
+          "type": "varchar(255)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "sess": {
+          "name": "sess",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "expire": {
+          "name": "expire",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.pixelian": {
+      "name": "pixelian",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "profile_picture": {
+          "name": "profile_picture",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "favorite_vtuber_name": {
+          "name": "favorite_vtuber_name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role": {
+          "name": "role",
+          "type": "roles",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'USER'"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "pixelian_favorite_vtuber_name_vtuber_name_fk": {
+          "name": "pixelian_favorite_vtuber_name_vtuber_name_fk",
+          "tableFrom": "pixelian",
+          "tableTo": "vtuber",
+          "columnsFrom": [
+            "favorite_vtuber_name"
+          ],
+          "columnsTo": [
+            "name"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "pixelian_email_unique": {
+          "name": "pixelian_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      }
+    },
+    "public.vtuber": {
+      "name": "vtuber",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "varchar(1000)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "height": {
+          "name": "height",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "birthdate": {
+          "name": "birthdate",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "age": {
+          "name": "age",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "icon_image": {
+          "name": "icon_image",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'UNDEFINED'"
+        },
+        "port_image": {
+          "name": "port_image",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'UNDEFINED'"
+        },
+        "youtube_channel_id": {
+          "name": "youtube_channel_id",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'UNDEFINED'"
+        },
+        "youtube": {
+          "name": "youtube",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "twitter": {
+          "name": "twitter",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "discord": {
+          "name": "discord",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "facebook": {
+          "name": "facebook",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "nameIndex": {
+          "name": "nameIndex",
+          "columns": [
+            {
+              "expression": "name",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "vtuber_name_unique": {
+          "name": "vtuber_name_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "name"
+          ]
+        },
+        "vtuber_youtube_unique": {
+          "name": "vtuber_youtube_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "youtube"
+          ]
+        },
+        "vtuber_twitter_unique": {
+          "name": "vtuber_twitter_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "twitter"
+          ]
+        },
+        "vtuber_discord_unique": {
+          "name": "vtuber_discord_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "discord"
+          ]
+        },
+        "vtuber_facebook_unique": {
+          "name": "vtuber_facebook_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "facebook"
+          ]
+        }
+      }
+    }
+  },
+  "enums": {
+    "public.live_insert_type": {
+      "name": "live_insert_type",
+      "schema": "public",
+      "values": [
+        "AUTO",
+        "MANUAL"
+      ]
+    },
+    "public.live_type": {
+      "name": "live_type",
+      "schema": "public",
+      "values": [
+        "LIVE",
+        "END"
+      ]
+    },
+    "public.roles": {
+      "name": "roles",
+      "schema": "public",
+      "values": [
+        "ADMIN",
+        "USER"
+      ]
+    },
+    "public.tiers": {
+      "name": "tiers",
+      "schema": "public",
+      "values": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

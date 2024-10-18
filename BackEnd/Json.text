@@ -1,0 +1,192 @@
+req.headers in websocket
+{
+  host: 'localhost:4000',
+  connection: 'Upgrade',
+  pragma: 'no-cache',
+  'cache-control': 'no-cache',
+  upgrade: 'websocket',
+  origin: 'http://localhost:5173',
+  'sec-websocket-version': '13',
+  'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
+  'accept-encoding': 'gzip, deflate, br, zstd',
+  'accept-language': 'en-US,en;q=0.9',
+  cookie: 'connSessID=s%3AmZs-BkRy6P8ttmliK00QzqbkRQTQJcef.xyA8XnN3mlEGRSDyxz%2F%2FDwRqqRj2CK%2BlpphepN2Cvro',
+  'sec-gpc': '1',
+  'sec-websocket-key': 'Qckws5URHS4ZkpbzylYpZQ==',
+  'sec-websocket-extensions': 'permessage-deflate; client_max_window_bits'
+}
+
+userInfo
+{
+    role: "ADMIN" | "USER";
+    id: string;
+    isOauth: boolean;
+}
+
+Feelings NOTIFICATION
+{
+  operation: 'INSERT',
+  data: {
+    id: 'e3303ef4-1f57-4bc5-a4da-9b3177e93604',
+    feeling: 'Hello, I am someone',
+    vtuber_name: 'Beta AMI',
+    pixelian_id: '2b4433a6-baad-49d8-9d3a-dd2a33063a18',
+    oauth_pixelian_id: null
+  }
+}
+
+https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q={vtuber_name}&key={YOUR_API_KEY} - BASE
+
+GET: https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q=Beta AMI&key=AIzaSyALAS3ZoyZBkILCUC5CrJMkE_mzD6ceU6s - beta ami
+{
+    "kind": "youtube#searchListResponse",
+    "etag": "zY-BD8gve0deOUEvr5TQ5rWR_MQ",
+    "nextPageToken": "CAUQAA",
+    "regionCode": "TH",
+    "pageInfo": {
+        "totalResults": 19744,
+        "resultsPerPage": 5
+    },
+    "items": [
+        {
+            "kind": "youtube#searchResult",
+            "etag": "-LaM0c4IyeZyXFa35ou1Wps7BJY",
+            "id": {
+                "kind": "youtube#channel",
+                "channelId": "UCa8ILv94qHT6oar_jVzg9sQ"
+            },
+            "snippet": {
+                "publishedAt": "2024-02-06T10:51:33Z",
+                "channelId": "UCa8ILv94qHT6oar_jVzg9sQ",
+                "title": "Beta AMI Ch. Pixela-World-End",
+                "description": "ภัยพิบัติหุ่นยนต์ Papa：@yuukihagure | @karamomokitchen ดวงดาวที่เบต้า เอเอ็มไอจากมา คือสถานที่ ๆ เทคโนโลยีก้าวหน้าจนถึงจุดสูงสุด ...",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/Y6CrVD1HESoYP3WoH2Sa49i0JrmJjVChwfsLyAoJMAdHukuEVTABlM3CE3AE7ukQD2kJshyU=s88-c-k-c0xffffffff-no-rj-mo"
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/Y6CrVD1HESoYP3WoH2Sa49i0JrmJjVChwfsLyAoJMAdHukuEVTABlM3CE3AE7ukQD2kJshyU=s240-c-k-c0xffffffff-no-rj-mo"
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/Y6CrVD1HESoYP3WoH2Sa49i0JrmJjVChwfsLyAoJMAdHukuEVTABlM3CE3AE7ukQD2kJshyU=s800-c-k-c0xffffffff-no-rj-mo"
+                    }
+                },
+                "channelTitle": "Beta AMI Ch. Pixela-World-End",
+                "liveBroadcastContent": "none",
+                "publishTime": "2024-02-06T10:51:33Z"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "Rvl1Fn9jVp1-7bE7YmRL0MvK2Lw",
+            "id": {
+                "kind": "youtube#channel",
+                "channelId": "UCFJ417iSVGzjaM1UqaZdjkQ"
+            },
+            "snippet": {
+                "publishedAt": "2016-10-31T13:02:57Z",
+                "channelId": "UCFJ417iSVGzjaM1UqaZdjkQ",
+                "title": "The Papillon Sisters - Ami & Beta",
+                "description": "",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/Wcwe9k3qe6pRbPOFPtH2BN7nrKHwn1VKjd7St39o0KOYB0ajddl0eI01OgMo_2_EOMaxUpivhQ=s88-c-k-c0xffffffff-no-rj-mo"
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/Wcwe9k3qe6pRbPOFPtH2BN7nrKHwn1VKjd7St39o0KOYB0ajddl0eI01OgMo_2_EOMaxUpivhQ=s240-c-k-c0xffffffff-no-rj-mo"
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/Wcwe9k3qe6pRbPOFPtH2BN7nrKHwn1VKjd7St39o0KOYB0ajddl0eI01OgMo_2_EOMaxUpivhQ=s800-c-k-c0xffffffff-no-rj-mo"
+                    }
+                },
+                "channelTitle": "The Papillon Sisters - Ami & Beta",
+                "liveBroadcastContent": "none",
+                "publishTime": "2016-10-31T13:02:57Z"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "9OcSdDq_k1aX2IEzD3T85ZrzFWY",
+            "id": {
+                "kind": "youtube#channel",
+                "channelId": "UCvdnVibAMuFN9IvDlXQK1fQ"
+            },
+            "snippet": {
+                "publishedAt": "2019-05-19T09:14:45Z",
+                "channelId": "UCvdnVibAMuFN9IvDlXQK1fQ",
+                "title": "Betta G Melaka Channel",
+                "description": "assalamualaikum..saya muhammad fauzi bin mad yusop berasal dari malaysia ingin memberikan sedikit tips dan ilmu kepada ...",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/ytc/AIdro_lSOKF5wOQ6pFsgRAWBJL_2IhDtbHMjE1f6vCGPCYZhLq0=s88-c-k-c0xffffffff-no-rj-mo"
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/ytc/AIdro_lSOKF5wOQ6pFsgRAWBJL_2IhDtbHMjE1f6vCGPCYZhLq0=s240-c-k-c0xffffffff-no-rj-mo"
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/ytc/AIdro_lSOKF5wOQ6pFsgRAWBJL_2IhDtbHMjE1f6vCGPCYZhLq0=s800-c-k-c0xffffffff-no-rj-mo"
+                    }
+                },
+                "channelTitle": "Betta G Melaka Channel",
+                "liveBroadcastContent": "none",
+                "publishTime": "2019-05-19T09:14:45Z"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "bmIuSRM5I23dXgaKQ9lDMDgdyZw",
+            "id": {
+                "kind": "youtube#channel",
+                "channelId": "UCwG_c9xdZ-CT9xYTRCvGgdA"
+            },
+            "snippet": {
+                "publishedAt": "2021-09-17T15:16:27Z",
+                "channelId": "UCwG_c9xdZ-CT9xYTRCvGgdA",
+                "title": "Ami ka beta",
+                "description": "",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/HaorBgZqH5DgWHx9pvznvAffVfUiTJOmQWS3jhuPH1Wznhzw97gD3DIHvIE9S90uFd97Pq2NnQ=s88-c-k-c0xffffffff-no-rj-mo"
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/HaorBgZqH5DgWHx9pvznvAffVfUiTJOmQWS3jhuPH1Wznhzw97gD3DIHvIE9S90uFd97Pq2NnQ=s240-c-k-c0xffffffff-no-rj-mo"
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/HaorBgZqH5DgWHx9pvznvAffVfUiTJOmQWS3jhuPH1Wznhzw97gD3DIHvIE9S90uFd97Pq2NnQ=s800-c-k-c0xffffffff-no-rj-mo"
+                    }
+                },
+                "channelTitle": "Ami ka beta",
+                "liveBroadcastContent": "none",
+                "publishTime": "2021-09-17T15:16:27Z"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "RsPFoQtPtXnvmJ7tdWFzi5fNiTo",
+            "id": {
+                "kind": "youtube#channel",
+                "channelId": "UCgvqvBoSHB1ctlyyhoHrGwQ"
+            },
+            "snippet": {
+                "publishedAt": "2012-11-09T15:29:18Z",
+                "channelId": "UCgvqvBoSHB1ctlyyhoHrGwQ",
+                "title": "Amixem",
+                "description": "Voyages, Expériences, Découvertes, Humour (des fois), LeBonCoin (Souvent), Amazon (Souvent aussi) et plein d'autres vidéos ...",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/XX1K_IPhILS54Sgv26VgCmxTN5KltpdWYS9wwWTIJ73wIScBFlzAPB1MMFudvmp06KFklYZR3w=s88-c-k-c0xffffffff-no-rj-mo"
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/XX1K_IPhILS54Sgv26VgCmxTN5KltpdWYS9wwWTIJ73wIScBFlzAPB1MMFudvmp06KFklYZR3w=s240-c-k-c0xffffffff-no-rj-mo"
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/XX1K_IPhILS54Sgv26VgCmxTN5KltpdWYS9wwWTIJ73wIScBFlzAPB1MMFudvmp06KFklYZR3w=s800-c-k-c0xffffffff-no-rj-mo"
+                    }
+                },
+                "channelTitle": "Amixem",
+                "liveBroadcastContent": "none",
+                "publishTime": "2012-11-09T15:29:18Z"
+            }
+        }
+    ]
+}

@@ -1,0 +1,321 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Cute+Font&display=swap");
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  /* font-family: Arial, Helvetica, sans-serif; */
+
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/*hover on each vtube */
+
+.Vhover {
+  padding: 1rem 2rem;
+  background-color: transparent;
+  color: #fff;
+  fill: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.15rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s, fill 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.Vhover:hover {
+  /* the color of text you want to show after hover */
+  color: black;
+}
+.Vhover:hover svg path {
+  fill: #0a0a0a; /* SVG fill color on hover */
+}
+
+.Vhover::after {
+  /* this is what all  will be done when mouse outs from the button */
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(121, 27, 13);
+  z-index: -1;
+
+  transition: 0.3s ease all;
+  transform: scale(0, 1);
+  /* this is you are to change for diffirent transition; */
+
+  transform-origin: bottom left;
+  transition: transform 500ms cubic-bezier(0.86, 0, 0.07, 1);
+  transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.Vhover:hover::after {
+  transform: scale(1, 1);
+  transform-origin: top left;
+}
+
+/* loop-bg-effect */
+.shaper {
+  background: gray url(https://image.ibb.co/ky3Y0S/teee.png) repeat 0 0;
+  width: 100%;
+  margin: 0;
+  height: relative;
+  box-sizing: border-box;
+  -webkit-animation: slide 30s linear infinite;
+}
+
+@-webkit-keyframes slide {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -512px -512px;
+  }
+}
+
+.button {
+  border: 1px solid #000;
+  background: transparent;
+  margin: 5px 5px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+  box-shadow: 3px 3px 0px 0px rgba(0, 0, 0);
+}
+
+.active {
+  background-color: #1e293b;
+  color: #fff;
+}
+
+@keyframes heart-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
+
+.heart-animation-0,
+.heart-animation-1,
+.heart-animation-2,
+.heart-animation-3,
+.heart-animation-4 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  animation: heart-rise 2s ease-in-out forwards;
+  transform: translateY(0);
+}
+
+.heart-animation-0 {
+  animation-delay: 0s;
+}
+
+.heart-animation-1 {
+  animation-delay: 0.2s;
+}
+
+.heart-animation-2 {
+  animation-delay: 0.4s;
+}
+
+.heart-animation-3 {
+  animation-delay: 0.6s;
+}
+
+.heart-animation-4 {
+  animation-delay: 0.8s;
+}
+
+@keyframes floating-hearts {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.envelope-container {
+  width: 300px;
+  height: 200px;
+  perspective: 1000px;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.envelope {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.envelope.open {
+  transform: rotateX(180deg);
+}
+
+.envelope .front,
+.envelope .back,
+.envelope .flap,
+.envelope .letter {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.envelope .front {
+  background-color: #e6d7b8;
+  transform: rotateX(0deg);
+  z-index: 2;
+}
+
+.envelope .back {
+  background-color: #d1b980;
+  transform: rotateX(180deg);
+}
+
+.envelope .flap {
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 100%;
+  border-top: 100px solid #c1a970;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  transform-origin: top;
+  transition: transform 0.4s 0.1s;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+.envelope .letter {
+  background-color: white;
+  padding: 20px;
+  transform: rotateX(180deg);
+  z-index: 1;
+  overflow-y: auto;
+}
+
+.envelope-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  font-weight: bold;
+  color: #8b4513;
+  z-index: 3;
+}

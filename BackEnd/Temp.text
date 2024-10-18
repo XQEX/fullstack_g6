@@ -1,0 +1,91 @@
+let response;
+  try {
+    response = await fetch(`https://youtube.com/channel/${channel_id}/streams`);
+  } catch (error) {
+    console.log(error);
+    return;
+  }
+  const responseText = await response.text();
+  const responseTextHTML = parse(responseText);
+
+
+{
+  id: 'yt:video:6ITFYiYB55Q',
+  'yt:videoId': '6ITFYiYB55Q',
+  'yt:channelId': 'UC4plRabXFGdAE6HP-tBQKdQ',
+  title: 'นัวมากมีตามมีตามเกิด| LIVE - Stumble Guys (เล่นด้วย)',
+  link: '',
+  author: {
+    name: 'HEARTROCKER',
+    uri: 'https://www.youtube.com/channel/UC4plRabXFGdAE6HP-tBQKdQ'       
+  },
+  published: '2024-09-28T13:15:42+00:00',
+  updated: '2024-09-28T13:30:41+00:00',
+  'media:group': {
+    'media:title': 'นัวมากมีตามมีตามเกิด| LIVE - Stumble Guys (เล่นด้วย)',
+    'media:content': '',
+    'media:thumbnail': '',
+    'media:description': 'อย่าลืมกดติดตามและกดกระดิ่งไว้ด้วยนะครับ เดี๋ยวพลาดคลิปใหม่ๆ นะ\n' +
+      'รับนกอ้วนไปเลี้ยง : https://www.youtube.com/channel/UC4plRabXFGdAE6HP-tBQKdQ/join\n' +
+      'สติกเกอร์ไลน์เวอร์ชั่นใหม่มาแล้ว! : https://line.me/S/sticker/14044316\n' +
+      'FB ส่วนตัว : https://www.facebook.com/ShutDaFux\n' +
+      'Fan Page : https://www.facebook.com/MightyCaster\n' +
+      'Twitter : ไม่เล่น บอกว่าไม่เล่น\n' +
+      'IG : เมื่อก่อนลืมรหัส คราวนี้ลืมลิ้ง\n' +
+      '*********************************************************\n' +
+      'เลื่อนลงมาทำไม ขึ้นไปดูคลิปก่อน! อ่าวดูจบแล้วหรอ ขอโทษ\n' +
+      'อย่าลืมคอมเมนท์ด้วยความสุภาพและให้เกียรติผู้อ่านด้วยนะครับ\n' +
+      '\n' +
+      'ขอบคุณที่แสดงให้เห็นว่าความสุขของผมคืออัลไล\n' +
+      '\n' +
+      '#hrk #heartrocker #เล่นด้วย',
+    'media:community': { 'media:starRating': '', 'media:statistics': '' }
+  }
+}
+
+Youtube API get live video
+{
+    "kind": "youtube#searchListResponse",
+    "etag": "8BItmWH2kNIHKhCY1rFb5yM2C-E",
+    "regionCode": "TH",
+    "pageInfo": {
+        "totalResults": 1,
+        "resultsPerPage": 1
+    },
+    "items": [
+        {
+            "kind": "youtube#searchResult",
+            "etag": "WGFNhyPAZsuB8x4vKP-T1Fi2Vi4",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "6ITFYiYB55Q"
+            },
+            "snippet": {
+                "publishedAt": "2024-09-28T13:15:42Z",
+                "channelId": "UC4plRabXFGdAE6HP-tBQKdQ",
+                "title": "นัวมากมีตามมีตามเกิด| LIVE - Stumble Guys (เล่นด้วย)",
+                "description": "อย่าลืมกดติดตามและกดกระดิ่งไว้ด้วยนะครับ เดี๋ยวพลาดคลิปใหม่ๆ นะ รับนกอ้วนไปเลี้ยง ...",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/6ITFYiYB55Q/default_live.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/6ITFYiYB55Q/mqdefault_live.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/6ITFYiYB55Q/hqdefault_live.jpg",
+                        "width": 480,
+                        "height": 360
+                    }
+                },
+                "channelTitle": "HEARTROCKER",
+                "liveBroadcastContent": "live",
+                "publishTime": "2024-09-28T13:15:42Z"
+            }
+        }
+    ]
+}
