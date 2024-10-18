@@ -3,8 +3,8 @@
 ##Developer manual
 
 ### Steps to setup project for developers
-Clone our repository to your pc
-Make two terminals by using the `cd` command
+Clone our repository to your pc and then
+make two terminals by using the `cd` command
 
 
 
