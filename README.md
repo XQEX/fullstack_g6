@@ -5,7 +5,7 @@ Dont forget to install Node.js to your pc [Download here](https://nodejs.org/en)
 ### Steps to setup project for developers
 Clone our repository to your pc and then
 make two terminals by using the `cd` command
-
+- To make website fully functional you need to have FrontEnd + BackEnd + DataBase(using Docker) running at the same time
 # FrontEnd
 ### CLI
   - Run `cd FrontEnd`
