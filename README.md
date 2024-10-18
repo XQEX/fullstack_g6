@@ -21,8 +21,11 @@ Make two terminals by using the `cd` command
       -     **FrontEnd\src\app\globals.css** 
       -	**FrontEnd\src\app\components** this folder contains components from shadcn, to learn more [click here](https://ui.shadcn.com/) 
 
-# BackEnd
-## To start
+**BackEnd\src\api** this folder contains essential codes for the backend services such as; api routes, websockets, and utility functions
+      - **BackEnd\src\api\routes** this folder contains all of the RESTful API routes, most of which are called by the frontend side of the app
+      - **BackEnd\src\api\utils** this folder contains all of the utility functions used in the API
+      - **BackEnd\src\api\middleware** this folder contains all of the global middlewares used in the API, such as; authentication check, role check, and passport middleware
+      - **BackEnd\src\api\websocket** this folder contains the websocket server setup, and it functions
 
 - In CLI
   - Run `cd BackEnd`
