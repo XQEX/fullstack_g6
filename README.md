@@ -29,7 +29,8 @@ Make two terminals by using the `cd` command
 ### Edit the `.env.test` file
   - Change name to `.env`
   - Setup the variables in it { From discord-backend channel }
-  - 
+
+### Essential folders
 **BackEnd\src\api** this folder contains essential codes for the backend services such as; api routes, websockets, and utility functions
       - **BackEnd\src\api\routes** this folder contains all of the RESTful API routes, most of which are called by the frontend side of the app
       - **BackEnd\src\api\utils** this folder contains all of the utility functions used in the API
