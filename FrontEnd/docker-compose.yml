@@ -1,0 +1,17 @@
+name: FrontEnd
+services:
+  frontend:
+    container_name: Pixela-FrontEnd
+    build:
+      context: C:/Users/ASUS/OneDrive/Desktop/Full-Stack/TERM1-PROJECT/fullstack_g6/FrontEnd
+      dockerfile: Dockerfile # Use "Dockerfile" if that's the actual name
+    ports:
+      - 3000:3000
+    networks:
+      - pf-net
+    environment:
+      - NGINX_PROXY=http://backend-service
+volumes:
+  pf-data:
+networks:
+  pf-net:
