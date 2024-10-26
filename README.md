@@ -1,37 +1,44 @@
 # PIXELA WORLDEND FC
 
-##Developer manual
-
+## Developer manual
+Dont forget to install Node.js to your pc [Download here](https://nodejs.org/en)
 ### Steps to setup project for developers
-Clone our repository to your pc
-Make two terminals by using the `cd` command
-
-
-
+Clone our repository to your pc and then
+make two terminals by using the `cd` command
+- To make website fully functional you need to have FrontEnd + BackEnd + DataBase(using Docker) running at the same time
 # FrontEnd
 ### CLI
-`cd FrontEnd`
-`npm install`
-`npm run dev`
+  - Run `cd FrontEnd`
+  - Run `npm install`
+  - Run `npm run dev`
 
 ### Essential folders
 
-**FrontEnd\public\img** this folder contains several images in .png or .jpg format that we’ve been used throughout this website
-      -	**FrontEnd\src\app\page.tsx** 
-      -     **FrontEnd\src\app\globals.css** 
-      -	**FrontEnd\src\app\components** this folder contains components from shadcn, to learn more [click here](https://ui.shadcn.com/) 
+  - **FrontEnd\public\img** this folder contains several images in .png or .jpg format that we’ve been used throughout this website
+  - **FrontEnd\src\app\globals.css** This css file applies styles universally across the site, You can modify your css in the ‘globals.css`
+  - **FrontEnd\src\app\components** this folder contains components from shadcn, to learn more [click here](https://ui.shadcn.com/) 
 
 # BackEnd
-## To start
-
-- In CLI
+### In CLI
   - Run `cd BackEnd`
   - Run `npm i`
 
-- Edit the `.env.test` file
-
+### Edit the `.env.test` file
   - Change name to `.env`
   - Setup the variables in it { From discord-backend channel }
+
+### Essential folders
+  - **BackEnd\src\api\routes** this folder contains all of the RESTful API routes, most of which are called by the frontend side of the app
+  - **BackEnd\src\api\utils** this folder contains all of the utility functions used in the API
+  - **BackEnd\src\api\middleware** this folder contains all of the global middlewares used in the API, such as; authentication check, role check, and passport middleware
+  - **BackEnd\src\api\websocket** this folder contains the websocket server setup, and it functions
+
+### API Routes(Briefly)
+  - **/api/users** use for requests that have something to do with user such as; getting users information, manipulating users information, registering, loggin in, loggin out, and deleting user
+  - **/api/admins** use for requests with users that have admin role such as; monitoring users status, and approving users membership proves
+  - **/api/vtubers** use for requests that have something to do with vtuber such as; getting vtubers information, adding, manipulating, and deleting vtubers(ADMIN)
+  - **/api/live-streams** use for requests that have something to do with live streams such as; getting live streams information, adding, manipulating and deleting vtuber's live streams(ADMIN)
+  - **/api/feelings/** use for requests that have something to do with feelings such as; adding, manipulating, and deleting feelings
 
 ## Setup database(& backend in the future)
 
