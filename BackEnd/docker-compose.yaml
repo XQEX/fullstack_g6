@@ -1,4 +1,4 @@
-name: g6_project
+name:
 services:
   database:
     image: postgres:16.4-alpine
@@ -11,6 +11,17 @@ services:
       - database_data:/var/lib/postgresql/data
     ports:
       - 5432:${POSTGRES_PORT}
+    networks:
+      - g6-network
+  backend:
+    depends_on:
+      - database
+    image: g6_backend:latest
+    container_name: g6-backend
+    env_file:
+      - .env
+    ports:
+      - ${BACKEND_PORT}:4000
     networks:
       - g6-network
 networks:

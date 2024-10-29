@@ -191,16 +191,16 @@ cron.schedule("*/5 * * * *", async () => {
 });
 
 // check and update lived videos from all vtubers once, then do it every 30 minutes (xx.10, xx.40)
-// await checkAndUpdateAllVtubersLiveStatus();
-// console.log(
-//   `${colors.blue}Operations on all Vtuber's LiveStream complete${colors.reset}`
-// );
-// cron.schedule("10,40 * * * *", async () => {
-//   await checkAndUpdateAllVtubersLiveStatus();
-//   console.log(
-//     `${colors.blue}Operations on all Vtuber's LiveStream complete${colors.reset}`
-//   );
-// });
+await checkAndUpdateAllVtubersLiveStatus();
+console.log(
+  `${colors.blue}Operations on all Vtuber's LiveStream complete${colors.reset}`
+);
+cron.schedule("10,40 * * * *", async () => {
+  await checkAndUpdateAllVtubersLiveStatus();
+  console.log(
+    `${colors.blue}Operations on all Vtuber's LiveStream complete${colors.reset}`
+  );
+});
 
 // !* For demonstration purpose *!
 // await checkAndUpdateVtuberLiveStatus(

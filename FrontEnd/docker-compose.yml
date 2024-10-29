@@ -1,17 +1,15 @@
-name: FrontEnd
+name: g6_project
 services:
   frontend:
-    container_name: Pixela-FrontEnd
-    build:
-      context: C:/Users/ASUS/OneDrive/Desktop/Full-Stack/TERM1-PROJECT/fullstack_g6/FrontEnd
-      dockerfile: Dockerfile # Use "Dockerfile" if that's the actual name
+    container_name: g6-frontend
+    image: g6_frontend:latest
     ports:
       - 3000:3000
     networks:
-      - pf-net
+      - g6-network
     environment:
       - NGINX_PROXY=http://backend-service
 volumes:
-  pf-data:
+  g6-data:
 networks:
-  pf-net:
+  g6-network:
