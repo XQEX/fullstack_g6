@@ -46,7 +46,7 @@ function Navbar() {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/users/info", {
+        const response = await fetch("http://g6-backend:4000/api/users/info", {
           credentials: "include",
         });
 
@@ -80,7 +80,7 @@ function Navbar() {
   }, []);
 
   async function handleLogout() {
-    const res = await fetch("http://localhost:4000/api/users/logout", {
+    const res = await fetch("http://g6-backend:4000/api/users/logout", {
       credentials: "include",
       method: "POST",
     });

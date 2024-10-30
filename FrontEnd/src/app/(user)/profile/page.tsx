@@ -72,7 +72,7 @@ export default function ProfilePage() {
     formData.append("profile_image", profilePicture);
 
     const response = await fetch(
-      "http://localhost:4000/api/users/upload/profile_image",
+      "http://g6-backend:4000/api/users/upload/profile_image",
       { method: "POST", credentials: "include", body: formData }
     );
 
@@ -113,7 +113,7 @@ export default function ProfilePage() {
     formData.append("mebmership_image", approvePicture);
 
     const response = await fetch(
-      "http://localhost:4000/api/users/upload/membership",
+      "http://g6-backend:4000/api/users/upload/membership",
       { method: "POST", credentials: "include", body: formData }
     );
 
@@ -136,7 +136,7 @@ export default function ProfilePage() {
   useEffect(() => {
     setIsFetching(true);
     const getUser = async () => {
-      const response = await fetch("http://localhost:4000/api/users/info", {
+      const response = await fetch("http://g6-backend:4000/api/users/info", {
         credentials: "include",
       });
 
@@ -155,7 +155,7 @@ export default function ProfilePage() {
 
     const getUserMemberships = async () => {
       const response = await fetch(
-        "http://localhost:4000/api/users/get/memberships",
+        "http://g6-backend:4000/api/users/get/memberships",
         { credentials: "include" }
       );
 

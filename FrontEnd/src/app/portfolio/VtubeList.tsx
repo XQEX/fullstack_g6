@@ -85,7 +85,7 @@ export default function VtubeList({
 
   async function handlefavoritebtn(vtube: Vtuber) {
     try {
-      const res = await fetch("http://localhost:4000/api/users/fav_vtuber", {
+      const res = await fetch("http://g6-backend:4000/api/users/fav_vtuber", {
         credentials: "include",
         method: "POST",
         body: JSON.stringify({ vtuber_name: vtube.name }),

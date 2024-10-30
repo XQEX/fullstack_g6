@@ -21,7 +21,7 @@ export default function Homepage() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://localhost:4000/api/users/info", {
+        const res = await fetch("http://g6-backend:4000/api/users/info", {
           credentials: "include",
         });
         const data = await res.json();

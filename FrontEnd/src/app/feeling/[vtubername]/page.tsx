@@ -52,7 +52,7 @@ export default function page({ params }: { params: { vtubername: string } }) {
   const { toast } = useToast();
 
   async function getVtube(name: string) {
-    const res = await fetch("http://localhost:4000/api/vtubers/get/" + name, {
+    const res = await fetch("http://g6-backend:4000/api/vtubers/get/" + name, {
       next: {
         revalidate: 60,
       },
@@ -69,7 +69,7 @@ export default function page({ params }: { params: { vtubername: string } }) {
   }
 
   function configureWebSocket(vtuberName: string) {
-    const newSocket = new WebSocket("ws://localhost:4000");
+    const newSocket = new WebSocket("ws://g6-backend:4000");
     newSocket.onerror = () => {
       console.log("Error when establishing Websocket");
     };
@@ -115,7 +115,7 @@ export default function page({ params }: { params: { vtubername: string } }) {
     setLoading(true); // Start loading state
 
     try {
-      const response = await fetch("http://localhost:4000/api/feelings/post", {
+      const response = await fetch("http://g6-backend:4000/api/feelings/post", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -147,7 +147,7 @@ export default function page({ params }: { params: { vtubername: string } }) {
     fetchData();
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://localhost:4000/api/users/info", {
+        const res = await fetch("http://g6-backend:4000/api/users/info", {
           credentials: "include",
         });
         const data = await res.json();
@@ -169,7 +169,7 @@ export default function page({ params }: { params: { vtubername: string } }) {
     try {
       console.log(id);
       const response = await fetch(
-        "http://localhost:4000/api/feelings/delete/" + id,
+        "http://g6-backend:4000/api/feelings/delete/" + id,
         {
           method: "DELETE",
           // headers: { "Content-Type": "application/json" },

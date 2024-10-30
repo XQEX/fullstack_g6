@@ -1,7 +1,7 @@
 import React from "react";
 
 async function getList() {
-  const res = await fetch("http://localhost:4000/api/live-streams/get", {
+  const res = await fetch("http://g6-backend:4000/api/live-streams/get", {
     credentials: "include",
   });
 
