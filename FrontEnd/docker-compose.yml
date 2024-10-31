@@ -1,4 +1,4 @@
-name: g6_project
+name: g6-pixela_worldend
 services:
   frontend:
     container_name: g6-frontend
