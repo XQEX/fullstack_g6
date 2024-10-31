@@ -24,7 +24,7 @@ export default function userStatus() {
   async function fetchAllUsers() {
     let response;
     try {
-      response = await fetch("http://g6-backend:4000/api/admins/get/users", {
+      response = await fetch("http://localhost:4000/api/admins/get/users", {
         credentials: "include",
       });
 
@@ -92,7 +92,7 @@ export default function userStatus() {
     fetchData();
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://g6-backend:4000/api/users/info", {
+        const res = await fetch("http://localhost:4000/api/users/info", {
           credentials: "include",
         });
         const data = await res.json();

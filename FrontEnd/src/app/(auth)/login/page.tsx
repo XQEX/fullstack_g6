@@ -20,7 +20,7 @@ export default function LoginForm() {
 
   useEffect(() => {
     const getUser = async () => {
-      const response = await fetch("http://g6-backend:4000/api/users/info", {
+      const response = await fetch("http://localhost:4000/api/users/info", {
         credentials: "include",
       });
 
@@ -86,7 +86,7 @@ export default function LoginForm() {
       // console.log(username);
       // console.log(password);
       const user = { name_email: username, password: password };
-      const response = await fetch("http://g6-backend:4000/api/users/login", {
+      const response = await fetch("http://localhost:4000/api/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -113,15 +113,15 @@ export default function LoginForm() {
   }
 
   function handleGoogleOauth() {
-    window.open("http://g6-backend:4000/api/users/oauth/google", "_self");
+    window.open("http://localhost:4000/api/users/oauth/google", "_self");
   }
 
   function handleTwitterOauth() {
-    window.open("http://g6-backend:4000/api/users/oauth/twitter", "_self");
+    window.open("http://localhost:4000/api/users/oauth/twitter", "_self");
   }
 
   function handleDiscordOauth() {
-    window.open("http://g6-backend:4000/api/users/oauth/discord", "_self");
+    window.open("http://localhost:4000/api/users/oauth/discord", "_self");
   }
 
   return (

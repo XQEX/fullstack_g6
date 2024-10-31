@@ -70,7 +70,7 @@ export default function SettingsPage() {
     setIsFetching(true);
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://g6-backend:4000/api/users/info", {
+        const res = await fetch("http://localhost:4000/api/users/info", {
           credentials: "include",
         });
         const data = await res.json();
@@ -89,7 +89,7 @@ export default function SettingsPage() {
     console.log(newUsername);
     console.log(curPassword1);
     const response = await fetch(
-      "http://g6-backend:4000/api/users/edit/username",
+      "http://localhost:4000/api/users/edit/username",
       {
         method: "PUT",
         credentials: "include",
@@ -116,15 +116,12 @@ export default function SettingsPage() {
 
   const ChangeEmail = async () => {
     setisLoading2(true);
-    const response = await fetch(
-      "http://g6-backend:4000/api/users/edit/email",
-      {
-        method: "PUT",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: newEmail, password: curPassword2 }),
-      }
-    );
+    const response = await fetch("http://localhost:4000/api/users/edit/email", {
+      method: "PUT",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: newEmail, password: curPassword2 }),
+    });
     const parsed = await response.json();
     if (!response.ok) {
       toast({
@@ -156,7 +153,7 @@ export default function SettingsPage() {
 
     setisLoading3(true);
     const response = await fetch(
-      "http://g6-backend:4000/api/users/edit/password",
+      "http://localhost:4000/api/users/edit/password",
       {
         method: "PUT",
         credentials: "include",
@@ -192,7 +189,7 @@ export default function SettingsPage() {
 
   const deleteAccount = async () => {
     setisLoading4(true);
-    const response = await fetch("http://g6-backend:4000/api/users/delete", {
+    const response = await fetch("http://localhost:4000/api/users/delete", {
       method: "DELETE",
       credentials: "include",
     });

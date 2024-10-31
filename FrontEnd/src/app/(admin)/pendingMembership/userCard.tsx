@@ -39,7 +39,7 @@ function UserCard({ id, name, profile_picture, imgsrc }: UserCardProps) {
 
   const getMemberShipTier = async () => {
     const response = await fetch(
-      `http://g6-backend:4000/api/admins/get/memberships`,
+      `http://localhost:4000/api/admins/get/memberships`,
       {
         method: "GET",
         headers: { "Content-Type": "application/json" },
@@ -70,7 +70,7 @@ function UserCard({ id, name, profile_picture, imgsrc }: UserCardProps) {
     let response;
     try {
       response = await fetch(
-        `http://g6-backend:4000/api/admins/membership/approve/${id}`,
+        `http://localhost:4000/api/admins/membership/approve/${id}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -95,7 +95,7 @@ function UserCard({ id, name, profile_picture, imgsrc }: UserCardProps) {
     let response;
     try {
       response = await fetch(
-        `http://g6-backend:4000/api/admins/membership/deny/${id}`,
+        `http://localhost:4000/api/admins/membership/deny/${id}`,
         {
           method: "DELETE",
           credentials: "include",

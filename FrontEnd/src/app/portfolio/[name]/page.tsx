@@ -9,7 +9,7 @@ export const dynamicParams = true;
 
 //static rendering
 export async function generateStaticParam() {
-  const res = await fetch("http://g6-backend:4567/Vtubers");
+  const res = await fetch("http://localhost:4567/Vtubers");
   const vtubes = await res.json();
   return vtubes.map((ticket: any) => ({
     id: ticket.id,
@@ -34,7 +34,7 @@ interface Vtuber {
 }
 
 async function getVtube(name: string): Promise<Vtuber> {
-  const res = await fetch("http://g6-backend:4000/api/vtubers/get/" + name, {
+  const res = await fetch("http://localhost:4000/api/vtubers/get/" + name, {
     next: {
       revalidate: 60,
     },

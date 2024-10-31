@@ -50,7 +50,7 @@ export const EnvelopeCard: React.FC<{
 
   async function handleEdit(id: number) {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    const res = await fetch("http://g6-backend:4000/api/feelings/edit/" + id, {
+    const res = await fetch("http://localhost:4000/api/feelings/edit/" + id, {
       next: {
         revalidate: 0,
       },
