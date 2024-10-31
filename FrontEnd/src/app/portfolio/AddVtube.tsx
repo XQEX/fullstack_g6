@@ -124,7 +124,7 @@ export default function AddVtube() {
     };
     try {
       const response1 = await fetch(
-        "http://g6-backend:4000/api/vtubers/add/info",
+        "http://localhost:4000/api/vtubers/add/info",
         {
           method: "POST",
           credentials: "include",
@@ -143,7 +143,7 @@ export default function AddVtube() {
       }
 
       const response2 = await fetch(
-        "http://g6-backend:4000/api/vtubers/add/icon-image/" + p1.data[0].id,
+        "http://localhost:4000/api/vtubers/add/icon-image/" + p1.data[0].id,
         {
           method: "POST",
           credentials: "include",
@@ -160,7 +160,7 @@ export default function AddVtube() {
       }
 
       const response3 = await fetch(
-        "http://g6-backend:4000/api/vtubers/add/port-image/" + p1.data[0].id,
+        "http://localhost:4000/api/vtubers/add/port-image/" + p1.data[0].id,
         {
           method: "POST",
           credentials: "include",

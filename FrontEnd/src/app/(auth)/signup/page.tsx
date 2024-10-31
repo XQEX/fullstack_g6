@@ -75,16 +75,13 @@ export default function SignUpForm() {
       console.log(password);
       console.log(email);
       const user = { username: username, email: email, password: password };
-      const response = await fetch(
-        "http://g6-backend:4000/api/users/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(user),
-        }
-      );
+      const response = await fetch("http://localhost:4000/api/users/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
 
       const { msg, data } = await response.json();
       console.log(data);

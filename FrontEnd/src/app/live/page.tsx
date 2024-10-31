@@ -114,7 +114,7 @@ export default function LivePage() {
       stream_category_name: category,
       status: "END",
     };
-    const res = await fetch("http://g6-backend:4000/api/live-streams/add", {
+    const res = await fetch("http://localhost:4000/api/live-streams/add", {
       method: "POST",
       credentials: "include",
       body: JSON.stringify(liveStreams),
@@ -146,7 +146,7 @@ export default function LivePage() {
 
   async function handleDelete(id: string) {
     const res = await fetch(
-      "http://g6-backend:4000/api/live-streams/delete/" + id,
+      "http://localhost:4000/api/live-streams/delete/" + id,
       {
         method: "DELETE",
         credentials: "include",
@@ -183,12 +183,9 @@ export default function LivePage() {
 
     const fetchlive = async () => {
       try {
-        const live = await fetch(
-          "http://g6-backend:4000/api/live-streams/get",
-          {
-            credentials: "include",
-          }
-        );
+        const live = await fetch("http://localhost:4000/api/live-streams/get", {
+          credentials: "include",
+        });
 
         const result = await live.json();
         setliveStreams(result.data);
@@ -199,7 +196,7 @@ export default function LivePage() {
 
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://g6-backend:4000/api/users/info", {
+        const res = await fetch("http://localhost:4000/api/users/info", {
           credentials: "include",
         });
         const data = await res.json();
@@ -212,7 +209,7 @@ export default function LivePage() {
     const fetchVtubers = async () => {
       try {
         const vtubersData = await fetch(
-          "http://g6-backend:4000/api/vtubers/get",
+          "http://localhost:4000/api/vtubers/get",
           {
             credentials: "include",
           }
@@ -227,7 +224,7 @@ export default function LivePage() {
     const fetchLiveCategory = async () => {
       try {
         const vtubersData = await fetch(
-          "http://g6-backend:4000/api/live-streams/get/categories",
+          "http://localhost:4000/api/live-streams/get/categories",
           {
             credentials: "include",
           }
@@ -271,7 +268,7 @@ export default function LivePage() {
       `filter=${JSON.stringify(filter)}`
     );
     const response = await fetch(
-      `http://g6-backend:4000/api/live-streams/get?${filterParams}`,
+      `http://localhost:4000/api/live-streams/get?${filterParams}`,
       {
         credentials: "include",
       }

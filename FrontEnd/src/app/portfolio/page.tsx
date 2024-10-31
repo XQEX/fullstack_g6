@@ -76,7 +76,7 @@ export default function Portfolio() {
     const fetchVtubers = async () => {
       try {
         const vtubersData = await fetch(
-          "http://g6-backend:4000/api/vtubers/get"
+          "http://localhost:4000/api/vtubers/get"
         ); // Adjust the API route as needed
         const result = await vtubersData.json();
         setVtubers(result.data);
@@ -87,7 +87,7 @@ export default function Portfolio() {
 
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://g6-backend:4000/api/users/info", {
+        const res = await fetch("http://localhost:4000/api/users/info", {
           credentials: "include",
         });
         const data = await res.json();
@@ -100,7 +100,7 @@ export default function Portfolio() {
     const fetchMembership = async () => {
       try {
         const res = await fetch(
-          "http://g6-backend:4000/api/admins/get/memberships",
+          "http://localhost:4000/api/admins/get/memberships",
           {
             credentials: "include",
           }
@@ -114,7 +114,7 @@ export default function Portfolio() {
 
     const getUserMemberships = async () => {
       const response = await fetch(
-        "http://g6-backend:4000/api/users/get/memberships",
+        "http://localhost:4000/api/users/get/memberships",
         { credentials: "include" }
       );
 
