@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import { Pen } from "lucide-react";
+import "dotenv/config";
 
 interface UserFeel {
   id: number;
@@ -50,17 +51,20 @@ export const EnvelopeCard: React.FC<{
 
   async function handleEdit(id: number) {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    const res = await fetch("http://localhost:4000/api/feelings/edit/" + id, {
-      next: {
-        revalidate: 0,
-      },
-      credentials: "include",
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ ...feeling, feeling: editedFeeling }), // Send the updated feeling
-    });
+    const res = await fetch(
+      `http://${process.env.WEB_HOST}:4000/api/feelings/edit/` + id,
+      {
+        next: {
+          revalidate: 0,
+        },
+        credentials: "include",
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...feeling, feeling: editedFeeling }), // Send the updated feeling
+      }
+    );
 
     if (!res.ok) {
       return;

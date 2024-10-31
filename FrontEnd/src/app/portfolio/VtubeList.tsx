@@ -10,6 +10,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
+import "dotenv/config";
 
 interface Vtuber {
   id: string;
@@ -85,12 +86,15 @@ export default function VtubeList({
 
   async function handlefavoritebtn(vtube: Vtuber) {
     try {
-      const res = await fetch("http://localhost:4000/api/users/fav_vtuber", {
-        credentials: "include",
-        method: "POST",
-        body: JSON.stringify({ vtuber_name: vtube.name }),
-        headers: { "content-type": "application/json" },
-      });
+      const res = await fetch(
+        `http://${process.env.WEB_HOST}:4000/api/users/fav_vtuber`,
+        {
+          credentials: "include",
+          method: "POST",
+          body: JSON.stringify({ vtuber_name: vtube.name }),
+          headers: { "content-type": "application/json" },
+        }
+      );
       const parsedResponse = await res.json();
 
       if (!parsedResponse.ok) {

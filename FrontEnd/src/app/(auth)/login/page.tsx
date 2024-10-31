@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import "dotenv/config";
 
 interface myObject {
   [key: string]: any;
@@ -20,9 +21,12 @@ export default function LoginForm() {
 
   useEffect(() => {
     const getUser = async () => {
-      const response = await fetch("http://localhost:4000/api/users/info", {
-        credentials: "include",
-      });
+      const response = await fetch(
+        `http://${process.env.WEB_HOST}:4000/api/users/info`,
+        {
+          credentials: "include",
+        }
+      );
 
       // not authenticated
       if (!response.ok) {
@@ -86,14 +90,17 @@ export default function LoginForm() {
       // console.log(username);
       // console.log(password);
       const user = { name_email: username, password: password };
-      const response = await fetch("http://localhost:4000/api/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify(user),
-      });
+      const response = await fetch(
+        `http://${process.env.WEB_HOST}:4000/api/users/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(user),
+        }
+      );
       const res = await response.json();
 
       if (!res.ok) {
@@ -113,15 +120,24 @@ export default function LoginForm() {
   }
 
   function handleGoogleOauth() {
-    window.open("http://localhost:4000/api/users/oauth/google", "_self");
+    window.open(
+      `http://${process.env.WEB_HOST}:4000/api/users/oauth/google`,
+      "_self"
+    );
   }
 
   function handleTwitterOauth() {
-    window.open("http://localhost:4000/api/users/oauth/twitter", "_self");
+    window.open(
+      `http://${process.env.WEB_HOST}:4000/api/users/oauth/twitter`,
+      "_self"
+    );
   }
 
   function handleDiscordOauth() {
-    window.open("http://localhost:4000/api/users/oauth/discord", "_self");
+    window.open(
+      `http://${process.env.WEB_HOST}:4000/api/users/oauth/discord`,
+      "_self"
+    );
   }
 
   return (

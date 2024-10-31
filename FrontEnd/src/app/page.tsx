@@ -4,6 +4,7 @@ import Link from "next/link";
 import Navbar from "./components/Navbar";
 import Animation from "./components/Animation"; // Fix: Corrected the component name
 import { useEffect, useState } from "react";
+import "dotenv/config";
 
 interface User {
   isOauth: boolean;
@@ -21,9 +22,12 @@ export default function Homepage() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://localhost:4000/api/users/info", {
-          credentials: "include",
-        });
+        const res = await fetch(
+          `http://${process.env.WEB_HOST}:4000/api/users/info`,
+          {
+            credentials: "include",
+          }
+        );
         const data = await res.json();
         setCurrentUser(data.data);
       } catch (error) {

@@ -15,6 +15,7 @@ import { Label } from "@/components/ui/label";
 import { Loader2, Pen } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import "dotenv/config";
 
 interface EditVtubeProps {
   id: string;
@@ -82,7 +83,7 @@ export default function EditEachVtube({
     try {
       setIsDeleting(true);
       const response = await fetch(
-        `http://localhost:4000/api/vtubers/delete/${id}`,
+        `http://${process.env.WEB_HOST}:4000/api/vtubers/delete/${id}`,
         {
           method: "DELETE",
           credentials: "include",
@@ -126,7 +127,7 @@ export default function EditEachVtube({
     }
     formData.append("vtuber_icon_image", IconPicture);
     const response = await fetch(
-      "http://localhost:4000/api/vtubers/edit/icon-image/" + id,
+      `http://${process.env.WEB_HOST}:4000/api/vtubers/edit/icon-image/` + id,
       { method: "PUT", credentials: "include", body: formData }
     );
 
@@ -153,7 +154,7 @@ export default function EditEachVtube({
     }
     formData.append("vtuber_port_image", profilePicture);
     const response = await fetch(
-      "http://localhost:4000/api/vtubers/edit/port-image/" + id,
+      `http://${process.env.WEB_HOST}:4000/api/vtubers/edit/port-image/` + id,
       { method: "PUT", credentials: "include", body: formData }
     );
 
@@ -186,17 +187,20 @@ export default function EditEachVtube({
   async function handleEdit(param: string) {
     setIsLoading3(true);
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    const res = await fetch("http://localhost:4000/api/vtubers/edit/" + param, {
-      next: {
-        revalidate: 0,
-      },
-      credentials: "include",
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(vtubeinfo),
-    });
+    const res = await fetch(
+      `http://${process.env.WEB_HOST}:4000/api/vtubers/edit/` + param,
+      {
+        next: {
+          revalidate: 0,
+        },
+        credentials: "include",
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(vtubeinfo),
+      }
+    );
 
     if (!res.ok) {
       setIsLoading3(false);

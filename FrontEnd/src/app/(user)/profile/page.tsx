@@ -21,6 +21,7 @@ import { fork } from "child_process";
 import { Loader2, Pen, Route } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
+import "dotenv/config";
 
 interface membership {
   vtuber: string | null;
@@ -72,7 +73,7 @@ export default function ProfilePage() {
     formData.append("profile_image", profilePicture);
 
     const response = await fetch(
-      "http://localhost:4000/api/users/upload/profile_image",
+      `http://${process.env.WEB_HOST}:4000/api/users/upload/profile_image`,
       { method: "POST", credentials: "include", body: formData }
     );
 
@@ -113,7 +114,7 @@ export default function ProfilePage() {
     formData.append("mebmership_image", approvePicture);
 
     const response = await fetch(
-      "http://localhost:4000/api/users/upload/membership",
+      `http://${process.env.WEB_HOST}:4000/api/users/upload/membership`,
       { method: "POST", credentials: "include", body: formData }
     );
 
@@ -136,9 +137,12 @@ export default function ProfilePage() {
   useEffect(() => {
     setIsFetching(true);
     const getUser = async () => {
-      const response = await fetch("http://localhost:4000/api/users/info", {
-        credentials: "include",
-      });
+      const response = await fetch(
+        `http://${process.env.WEB_HOST}:4000/api/users/info`,
+        {
+          credentials: "include",
+        }
+      );
 
       // not authenticated
       if (!response.ok) {
@@ -155,7 +159,7 @@ export default function ProfilePage() {
 
     const getUserMemberships = async () => {
       const response = await fetch(
-        "http://localhost:4000/api/users/get/memberships",
+        `http://${process.env.WEB_HOST}:4000/api/users/get/memberships`,
         { credentials: "include" }
       );
 

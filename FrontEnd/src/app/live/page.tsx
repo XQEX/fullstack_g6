@@ -33,6 +33,7 @@ import {
 } from "@/components/ui/select";
 import Navbar from "../components/Navbar";
 import { useToast } from "@/hooks/use-toast";
+import "dotenv/config";
 
 interface LiveStreams {
   clip_name: string;
@@ -114,12 +115,15 @@ export default function LivePage() {
       stream_category_name: category,
       status: "END",
     };
-    const res = await fetch("http://localhost:4000/api/live-streams/add", {
-      method: "POST",
-      credentials: "include",
-      body: JSON.stringify(liveStreams),
-      headers: { "content-type": "application/json" },
-    });
+    const res = await fetch(
+      `http://${process.env.WEB_HOST}:4000/api/live-streams/add`,
+      {
+        method: "POST",
+        credentials: "include",
+        body: JSON.stringify(liveStreams),
+        headers: { "content-type": "application/json" },
+      }
+    );
 
     const parsedres = await res.json();
 
@@ -146,7 +150,7 @@ export default function LivePage() {
 
   async function handleDelete(id: string) {
     const res = await fetch(
-      "http://localhost:4000/api/live-streams/delete/" + id,
+      `http://${process.env.WEB_HOST}:4000/api/live-streams/delete/` + id,
       {
         method: "DELETE",
         credentials: "include",
@@ -183,9 +187,12 @@ export default function LivePage() {
 
     const fetchlive = async () => {
       try {
-        const live = await fetch("http://localhost:4000/api/live-streams/get", {
-          credentials: "include",
-        });
+        const live = await fetch(
+          `http://${process.env.WEB_HOST}:4000/api/live-streams/get`,
+          {
+            credentials: "include",
+          }
+        );
 
         const result = await live.json();
         setliveStreams(result.data);
@@ -196,9 +203,12 @@ export default function LivePage() {
 
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://localhost:4000/api/users/info", {
-          credentials: "include",
-        });
+        const res = await fetch(
+          `http://${process.env.WEB_HOST}:4000/api/users/info`,
+          {
+            credentials: "include",
+          }
+        );
         const data = await res.json();
         setCurrentUser(data.data);
       } catch (error) {
@@ -209,7 +219,7 @@ export default function LivePage() {
     const fetchVtubers = async () => {
       try {
         const vtubersData = await fetch(
-          "http://localhost:4000/api/vtubers/get",
+          `http://${process.env.WEB_HOST}:4000/api/vtubers/get`,
           {
             credentials: "include",
           }
@@ -224,7 +234,7 @@ export default function LivePage() {
     const fetchLiveCategory = async () => {
       try {
         const vtubersData = await fetch(
-          "http://localhost:4000/api/live-streams/get/categories",
+          `http://${process.env.WEB_HOST}:4000/api/live-streams/get/categories`,
           {
             credentials: "include",
           }
@@ -268,7 +278,7 @@ export default function LivePage() {
       `filter=${JSON.stringify(filter)}`
     );
     const response = await fetch(
-      `http://localhost:4000/api/live-streams/get?${filterParams}`,
+      `http://${process.env.WEB_HOST}:4000/api/live-streams/get?${filterParams}`,
       {
         credentials: "include",
       }

@@ -15,6 +15,7 @@ import { Label } from "@/components/ui/label";
 import { Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import "dotenv/config";
 
 interface Vtuber {
   Name: string;
@@ -124,7 +125,7 @@ export default function AddVtube() {
     };
     try {
       const response1 = await fetch(
-        "http://localhost:4000/api/vtubers/add/info",
+        `http://${process.env.WEB_HOST}:4000/api/vtubers/add/info`,
         {
           method: "POST",
           credentials: "include",
@@ -143,7 +144,8 @@ export default function AddVtube() {
       }
 
       const response2 = await fetch(
-        "http://localhost:4000/api/vtubers/add/icon-image/" + p1.data[0].id,
+        `http://${process.env.WEB_HOST}:4000/api/vtubers/add/icon-image/` +
+          p1.data[0].id,
         {
           method: "POST",
           credentials: "include",
@@ -160,7 +162,8 @@ export default function AddVtube() {
       }
 
       const response3 = await fetch(
-        "http://localhost:4000/api/vtubers/add/port-image/" + p1.data[0].id,
+        `http://${process.env.WEB_HOST}:4000/api/vtubers/add/port-image/` +
+          p1.data[0].id,
         {
           method: "POST",
           credentials: "include",

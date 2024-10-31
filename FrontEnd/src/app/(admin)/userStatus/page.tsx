@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import UserCard from "./userCard";
 import Link from "next/link";
+import "dotenv/config";
 
 interface User {
   isOauth: boolean;
@@ -24,9 +25,12 @@ export default function userStatus() {
   async function fetchAllUsers() {
     let response;
     try {
-      response = await fetch("http://localhost:4000/api/admins/get/users", {
-        credentials: "include",
-      });
+      response = await fetch(
+        `http://${process.env.WEB_HOST}:4000/api/admins/get/users`,
+        {
+          credentials: "include",
+        }
+      );
 
       const parsedResponse = await response.json();
 
@@ -46,7 +50,7 @@ export default function userStatus() {
       socket.current = null;
     }
 
-    const newSocket = new WebSocket("ws://localhost:4000");
+    const newSocket = new WebSocket(`ws://${process.env.WEB_HOST}:4000`);
 
     newSocket.onerror = () => {
       console.log("error plz handle");
@@ -92,9 +96,12 @@ export default function userStatus() {
     fetchData();
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://localhost:4000/api/users/info", {
-          credentials: "include",
-        });
+        const res = await fetch(
+          `http://${process.env.WEB_HOST}:4000/api/users/info`,
+          {
+            credentials: "include",
+          }
+        );
         const data = await res.json();
         setCurrentUser(data.data);
       } catch (error) {

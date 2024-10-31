@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Description } from "@radix-ui/react-toast";
 import Link from "next/link";
 import { Checkbox } from "@/components/ui/checkbox";
+import "dotenv/config";
 
 export function CheckboxWithText({
   isChecked,
@@ -75,13 +76,16 @@ export default function SignUpForm() {
       console.log(password);
       console.log(email);
       const user = { username: username, email: email, password: password };
-      const response = await fetch("http://localhost:4000/api/users/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      });
+      const response = await fetch(
+        `http://${process.env.WEB_HOST}:4000/api/users/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        }
+      );
 
       const { msg, data } = await response.json();
       console.log(data);

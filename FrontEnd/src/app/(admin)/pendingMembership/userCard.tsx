@@ -13,6 +13,7 @@ import { Description } from "@radix-ui/react-toast";
 import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import "dotenv/config";
 
 interface UserCardProps {
   id: string;
@@ -39,7 +40,7 @@ function UserCard({ id, name, profile_picture, imgsrc }: UserCardProps) {
 
   const getMemberShipTier = async () => {
     const response = await fetch(
-      `http://localhost:4000/api/admins/get/memberships`,
+      `http://${process.env.WEB_HOST}:4000/api/admins/get/memberships`,
       {
         method: "GET",
         headers: { "Content-Type": "application/json" },
@@ -70,7 +71,7 @@ function UserCard({ id, name, profile_picture, imgsrc }: UserCardProps) {
     let response;
     try {
       response = await fetch(
-        `http://localhost:4000/api/admins/membership/approve/${id}`,
+        `http://${process.env.WEB_HOST}:4000/api/admins/membership/approve/${id}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -95,7 +96,7 @@ function UserCard({ id, name, profile_picture, imgsrc }: UserCardProps) {
     let response;
     try {
       response = await fetch(
-        `http://localhost:4000/api/admins/membership/deny/${id}`,
+        `http://${process.env.WEB_HOST}:4000/api/admins/membership/deny/${id}`,
         {
           method: "DELETE",
           credentials: "include",

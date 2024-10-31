@@ -2,6 +2,7 @@
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 import VtubeFeelingList from "./VtubeFeelingList";
+import "dotenv/config";
 
 interface User {
   isOauth: boolean;
@@ -26,7 +27,7 @@ export default function Portfolio() {
     const fetchVtubers = async () => {
       try {
         const vtubersData = await fetch(
-          "http://localhost:4000/api/vtubers/get"
+          `http://${process.env.WEB_HOST}:4000/api/vtubers/get`
         ); // Adjust the API route as needed
         const result = await vtubersData.json();
         setVtubers(result.data);
@@ -37,9 +38,12 @@ export default function Portfolio() {
 
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://localhost:4000/api/users/info", {
-          credentials: "include",
-        });
+        const res = await fetch(
+          `http://${process.env.WEB_HOST}:4000/api/users/info`,
+          {
+            credentials: "include",
+          }
+        );
         const data = await res.json();
         setCurrentUser(data.data);
       } catch (error) {

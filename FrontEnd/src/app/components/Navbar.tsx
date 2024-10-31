@@ -12,6 +12,7 @@ import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
+import "dotenv/config";
 
 interface User {
   isOauth: boolean;
@@ -46,9 +47,12 @@ function Navbar() {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/users/info", {
-          credentials: "include",
-        });
+        const response = await fetch(
+          `http://${process.env.WEB_HOST}:4000/api/users/info`,
+          {
+            credentials: "include",
+          }
+        );
 
         if (!response.ok) {
           // User not authenticated
@@ -80,10 +84,13 @@ function Navbar() {
   }, []);
 
   async function handleLogout() {
-    const res = await fetch("http://localhost:4000/api/users/logout", {
-      credentials: "include",
-      method: "POST",
-    });
+    const res = await fetch(
+      `http://${process.env.WEB_HOST}:4000/api/users/logout`,
+      {
+        credentials: "include",
+        method: "POST",
+      }
+    );
     if (res.ok) {
       setIsLoggedIn(false);
       router.push("/"); // redirect to homepage or login page

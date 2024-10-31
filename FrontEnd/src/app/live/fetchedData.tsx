@@ -1,9 +1,13 @@
 import React from "react";
+import "dotenv/config";
 
 async function getList() {
-  const res = await fetch("http://localhost:4000/api/live-streams/get", {
-    credentials: "include",
-  });
+  const res = await fetch(
+    `http://${process.env.WEB_HOST}:4000/api/live-streams/get`,
+    {
+      credentials: "include",
+    }
+  );
 
   return res.json();
 }
